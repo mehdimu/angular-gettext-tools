@@ -78,10 +78,17 @@ describe 'Extract', ->
         catalog = testExtract(files)
 
         i = catalog.items
-        assert.equal(i.length, 1)
+        assert.equal(i.length, 3)
 
-        assert.equal(i[0].msgid, 'Translate this')
-        assert.equal(i[0].extractedComments, 'This is a comment')
+
+        assert.equal(i[1].msgid, 'Second translation')
+        assert.equal(i[1].extractedComments, 'This is second comment')
+
+        assert.equal(i[2].msgid, 'Translate this')
+        assert.equal(i[2].extractedComments, 'This is a comment')
+
+        assert.equal(i[0].msgid, 'No comment')
+        assert.equal(i[0].extractedComments, '')
 
     it 'Extracts comment strings from JavaScript source', ->
         files = [
